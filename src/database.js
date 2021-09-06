@@ -1,5 +1,11 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
+import config from "./config";
 
-mongoose.connect("mongodb+srv://ups:salesiana@cluster0.epgdx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-    .then(db => console.log('Db is connected.'))
-    .catch(error => console.log(error))
+mongoose
+  .connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then((db) => console.log(`DB is connected`))
+  .catch((err) => console.log(err));
